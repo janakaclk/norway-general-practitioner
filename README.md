@@ -14,3 +14,6 @@ function onError(e)
 {
     console.log(e.message);
 }
+
+# Version history
+0.1.0 initial version (works for the best case. No known issues. Not tested for corner cases.)
