@@ -22,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/janakaclk/norway-general-practitioner/issues"
   },
-  "homepage": "https://github.com/janakaclk/norway-general-practitioner"
+  "homepage": "https://github.com/janakaclk/norway-general-practitioner",
+  "devDependencies": {
+    "chai": "^2.1.0",
+    "mock-request": "^0.1.2",
+    "nock": "^0.59.1"
+  }
 }
