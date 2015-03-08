@@ -1,6 +1,6 @@
 {
   "name": "norway-general-practitioner",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "node js module to retrieve norway-general-practitioner availability and other details",
   "main": "index.js",
   "scripts": {
