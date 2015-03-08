@@ -9,7 +9,7 @@ var assert = chai.assert,
 
 var data_requester = require("../lib/data_requester");
 
-describe('/BestCase', function () {
+describe('/data_requester_tests/success', function () {
     var doctorService = nock('https://tjenester.nav.no')
         .post('/minfastlege/innbygger/fastlegesokikkepalogget.do')
         .reply(200, 'Hello');
@@ -24,10 +24,10 @@ describe('/BestCase', function () {
                 assert.fail( "When response is 400, error call back should not get invoked.");
                 done();
             });
-    })
+    });
 });
 
-describe('/ErrorCase', function () {
+describe('/data_requester_tests/error', function () {
     var doctorService = nock('https://tjenester.nav.no')
         .post('/minfastlege/innbygger/fastlegesokikkepalogget.do')
         .reply(400, 'Hello');

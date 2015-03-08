@@ -1,0 +1,811 @@
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" SYSTEM "xhtml1-transitional.dtd">
+
+<html>
+<head>
+
+    <script type="text/javascript">
+        function oppdaterHjelp(tekst) {
+            tekst = document.createTextNode(tekst);
+            oldnode = document.getElementById('hjelpetekst').childNodes.item(0);
+            document.getElementById('hjelpetekst').replaceChild(tekst, oldnode);
+        }
+
+        function firstFocus() {
+            if (document.forms.length > 0) {
+                var TForm = document.forms[0];
+                var i;
+                for (i = 0; i < TForm.length; i++) {
+                    if ((TForm.elements[i].type == "text") ||
+                            (TForm.elements[i].type == "textarea") ||
+                            (TForm.elements[i].type.toString().charAt(0) == "s")) {
+                        document.forms[0].elements[i];
+                        break;
+                    }
+                }
+            }
+        }
+
+        function toemfnr() {
+            document.forms[0].fodselsnummer.value = document.forms[0].fodselsnummerinitielt.value;
+            document.forms[0].fodselsnummerinitielt.value = '';
+        }
+
+    </script>
+
+    <title>MinFastlege</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+
+    <link rel="stylesheet" type="text/css" href="/minfastlege/css/stilark_trygdeetaten.css"
+          title="RTV"/>
+    <link rel="stylesheet" type="text/css" href="/minfastlege/css/internett.css" title="RTV"/>
+    <link type="text/css" rel="stylesheet" media="print" href="/minfastlege/css/print.css"/>
+    <!--[if IE 6]>
+    <link type="text/css" rel="stylesheet" href="/minfastlege/css/ie6.css"/>
+    <![endif]-->
+</head>
+
+<body >
+
+
+
+<div style="display: none">Version: 1.5.8</div>
+
+<div id="NAVheaderContainer">
+	<div id="NAVheaderContentContainer">
+	  <a href='http://www.helfo.no'>
+	    <img src="/minfastlege/images/global/helfologo.gif" class="NAVlogo" alt="Helfo logo"/>
+	  </a>
+	</div>
+</div>
+<div id="NAVcenterContainer">
+    <div id="NAVborderLeft">
+        <div id="NAVborderRight">
+            <div id="NAVcontentSpacerOperaFix">
+                <div id="NAVcontentSpacerContainer">
+					<div id="NAVtjenesterSeparatorHeader">&nbsp;</div>
+					<div id="NAVpageContainer">
+
+
+
+
+
+
+
+<div id="NAVtjenesterHeaderContainer">
+    <h1><span>
+    	MinFastlege   
+    </span></h1>
+</div>
+
+
+<div id="NAVtjenesteFullWidthContainer">
+        <table width="100%">
+            <tr>
+                <td align="right">
+                    
+
+
+
+
+
+
+
+                </td>
+            </tr>
+        </table>
+    
+
+
+
+
+<a name="sok"></a>
+<form name="fastlegeSokForm" method="post" action="/minfastlege/innbygger/fastlegesokikkepalogget.do">
+	<table class="artikkel"
+		summary="Denne tabellen inneholder muligheter for å søke etter fastleger. Etter å ha valgt fylke vil kommune/bydel oppdateres.">
+		<tr>
+			<td colspan="4">
+			<strong>Søk etter fastleger</strong>
+			</td>
+		</tr>
+		<tr>
+			<td align="left" width="5%">Fylke:</td>
+			<td>&nbsp;</td>
+			<td align="left" width="10%"><select name="fylke" tabindex="1" onchange="submit()"><option value="02">Akershus</option>
+<option value="09">Aust-Agder</option>
+<option value="06">Buskerud</option>
+<option value="20">Finnmark</option>
+<option value="04">Hedmark</option>
+<option value="12">Hordaland</option>
+<option value="15">Møre Og Romsdal</option>
+<option value="18">Nordland</option>
+<option value="17">Nord-Trøndelag</option>
+<option value="05">Oppland</option>
+<option value="03" selected="selected">Oslo</option>
+<option value="11">Rogaland</option>
+<option value="14">Sogn Og Fjordane</option>
+<option value="16">Sør-Trøndelag</option>
+<option value="08">Telemark</option>
+<option value="19">Troms</option>
+<option value="10">Vest-Agder</option>
+<option value="07">Vestfold</option>
+<option value="01">Østfold</option></select></td>
+			<td width="5%">&nbsp;</td>
+			<td width="80%">&nbsp;</td>
+		</tr>
+		<tr>
+			<td align="left" width="5%">Kommune/bydel:</td>
+			<td>&nbsp;</td>
+			<td align="left" width="10%"><select name="kommune" tabindex="2"><option value="">Alle Kommuner</option>
+<option value="0301">Oslo</option>
+<option value="030112">-Alna</option>
+<option value="030109">-Bjerke</option>
+<option value="030105">-Frogner</option>
+<option value="030101">-Gamle Oslo</option>
+<option value="030110">-Grorud</option>
+<option value="030102">-Grünerløkka</option>
+<option value="030108">-Nordre Aker</option>
+<option value="030114">-Nordstrand</option>
+<option value="030103" selected="selected">-Sagene</option>
+<option value="030104">-St. Hanshaugen</option>
+<option value="030111">-Stovner</option>
+<option value="030115">-Søndre Nordstrand</option>
+<option value="030106">-Ullern</option>
+<option value="030107">-Vestre Aker</option>
+<option value="030113">-Østensjø</option></select></td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		<td align="right" colspan="2">
+		<table cellpadding="3">
+			<tr>
+				<td>
+					<input type="submit" name="sok" tabindex="3" value="Søk etter fastlege" class="NAVbtn">
+				</td>
+				<td>
+					<input type="submit" name="tilbake" tabindex="4" value="Tilbake" class="NAVbtn" onclick="bCancel=true;">
+				</td>
+			</tr>
+		</table>	
+		</td>
+		</tr>
+		<tr>
+			<td align="right" colspan="4">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="tekst" colspan="4"><ul><li>Oversikten viser alle leger i kommunen/bydelen. Listen kan sorteres ved å klikke på hver kolonneoverskrift.</li></ul></td>
+		</tr>
+	</table>
+</form>
+
+
+
+	<a name="sokresultat"></a>
+	
+<table class="RTVtbl" id="fastlege">
+<thead>
+<tr>
+<th class="sortable order1 sorted TableheaderLine">
+<a href="fastlegesokikkepalogget.do?kommune=030103&amp;d-3996401-o=1&amp;fylke=03&amp;sort=true&amp;d-3996401-s=0&amp;sok=S%F8k+etter+fastlege">Fastlege</a></th>
+<th class="sortable TableheaderLine">
+<a href="fastlegesokikkepalogget.do?kommune=030103&amp;d-3996401-o=2&amp;fylke=03&amp;sort=true&amp;d-3996401-s=1&amp;sok=S%F8k+etter+fastlege">Kj&oslash;nn</a></th>
+<th class="sortable TableheaderLine">
+<a href="fastlegesokikkepalogget.do?kommune=030103&amp;d-3996401-o=2&amp;fylke=03&amp;sort=true&amp;d-3996401-s=2&amp;sok=S%F8k+etter+fastlege">Praksisnavn</a></th>
+<th class="sortable TableheaderLine">
+<a href="fastlegesokikkepalogget.do?kommune=030103&amp;d-3996401-o=2&amp;fylke=03&amp;sort=true&amp;d-3996401-s=3&amp;sok=S%F8k+etter+fastlege">Tilgj.&sup1;</a></th>
+<th class="sortable TableheaderLine">
+<a href="fastlegesokikkepalogget.do?kommune=030103&amp;d-3996401-o=2&amp;fylke=03&amp;sort=true&amp;d-3996401-s=4&amp;sok=S%F8k+etter+fastlege">Adresse</a></th>
+<th class="sortable TableheaderLine">
+<a href="fastlegesokikkepalogget.do?kommune=030103&amp;d-3996401-o=2&amp;fylke=03&amp;sort=true&amp;d-3996401-s=5&amp;sok=S%F8k+etter+fastlege">Poststed</a></th>
+<th class="sortable TableheaderLine">
+<a href="fastlegesokikkepalogget.do?kommune=030103&amp;d-3996401-o=2&amp;fylke=03&amp;sort=true&amp;d-3996401-s=6&amp;sok=S%F8k+etter+fastlege">GP&sup2;</a></th>
+<th class="sortable TableheaderLine">
+<a href="fastlegesokikkepalogget.do?kommune=030103&amp;d-3996401-o=2&amp;fylke=03&amp;sort=true&amp;d-3996401-s=7&amp;sok=S%F8k+etter+fastlege">FL&sup3;</a></th>
+<th class="sortable TableheaderLine">
+<a href="fastlegesokikkepalogget.do?kommune=030103&amp;d-3996401-o=2&amp;fylke=03&amp;sort=true&amp;d-3996401-s=8&amp;sok=S%F8k+etter+fastlege">Antall<br>innbyggere<br>på listen</a></th>
+<th class="sortable TableheaderLine">
+<a href="fastlegesokikkepalogget.do?kommune=030103&amp;d-3996401-o=2&amp;fylke=03&amp;sort=true&amp;d-3996401-s=9&amp;sok=S%F8k+etter+fastlege">Ledig</a></th></tr></thead>
+<tfoot>
+			<tr>
+				<td></td>
+			</tr>
+		</tfoot>
+<tbody>
+<tr class="odd">
+<td>Aa, Øyvind</td>
+<td style="text-align: center;">M</td>
+<td>Storoklinikken</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Vitaminveien 7-9</td>
+<td>0485 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1498</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="even">
+<td>Abedali, Adel Hameed</td>
+<td style="text-align: center;">M</td>
+<td>Sandaker Legekontor</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 59</td>
+<td>0477 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1487</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="odd">
+<td>Andersen, Dan M Nørager</td>
+<td style="text-align: center;">M</td>
+<td>Storoklinikken</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Vitaminveien 7-9</td>
+<td>0485 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">2001</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="even">
+<td>Arntsen, Siri Annie</td>
+<td style="text-align: center;">K</td>
+<td>Torshovdalen Legesenter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Hans Nielsen Hauges Gate 37 E</td>
+<td>0481 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1700</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="odd">
+<td>Bakken, Bjørg Tove</td>
+<td style="text-align: center;">K</td>
+<td>Sandaker Legekontor</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 59</td>
+<td>0477 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1291</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="even">
+<td>Basharat, Faiza</td>
+<td style="text-align: center;">K</td>
+<td>Torshovdalen Legesenter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Hans Nielsen Hauges Gate 37 E</td>
+<td>0481 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1697</td>
+<td style="text-align: right;">3</td></tr>
+<tr class="odd">
+<td>Bjaaland, Gunnar</td>
+<td style="text-align: center;">M</td>
+<td>Legene I Bergensgata</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Bergensgata 12</td>
+<td>0468 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1803</td>
+<td style="text-align: right;">17</td></tr>
+<tr class="even">
+<td>Borge, Dorthe Marie</td>
+<td style="text-align: center;">K</td>
+<td>Legene I Bergensgata</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Bergensgata 12</td>
+<td>0468 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1485</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="odd">
+<td>Bugge, Harald</td>
+<td style="text-align: center;">M</td>
+<td>Bentsebro Legesenter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 78 A</td>
+<td>0484 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1798</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="even">
+<td>Bye, Anders</td>
+<td style="text-align: center;">M</td>
+<td>Storoklinikken</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Vitaminveien 7-9</td>
+<td>0485 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1936</td>
+<td style="text-align: right;">64</td></tr>
+<tr class="odd">
+<td>Eriksen, Stein Anders</td>
+<td style="text-align: center;">M</td>
+<td>Torshovdalen Legesenter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Hans Nielsen Hauges Gate 37 E</td>
+<td>0481 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1698</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="even">
+<td>Fagermoen, Arne Olav S</td>
+<td style="text-align: center;">M</td>
+<td>Sagene Lokalmedisinske Senter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 33C</td>
+<td>0477 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: right;">411</td>
+<td style="text-align: right;">289</td></tr>
+<tr class="odd">
+<td>Giercksky, Tone Cathrine</td>
+<td style="text-align: center;">K</td>
+<td>Iladalen Legekontor</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Kingos Gate 12-14</td>
+<td>0457 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1391</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="even">
+<td>Hallvik, Clas</td>
+<td style="text-align: center;">M</td>
+<td>Sagene Ring Legekontor</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Stockfleths Gate 51</td>
+<td>0461 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1699</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="odd">
+<td>Halsen, Arve</td>
+<td style="text-align: center;">M</td>
+<td>Sagene Lokalmedisinske Senter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 33C</td>
+<td>0477 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: right;">624</td>
+<td style="text-align: right;">76</td></tr>
+<tr class="even">
+<td>Haudemann-Andersen, Stein</td>
+<td style="text-align: center;">M</td>
+<td>Bentsebro Legesenter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 78 A</td>
+<td>0484 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1889</td>
+<td style="text-align: right;">111</td></tr>
+<tr class="odd">
+<td>Izadi, Parviz Nieuwenburg</td>
+<td style="text-align: center;">M</td>
+<td>Storoklinikken</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Vitaminveien 7-9</td>
+<td>0485 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1965</td>
+<td style="text-align: right;">35</td></tr>
+<tr class="even">
+<td>Johansen, Terje</td>
+<td style="text-align: center;">M</td>
+<td>Iladalen Legekontor</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Kingos Gate 12-14</td>
+<td>0457 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1451</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="odd">
+<td>Karlseng, Svein Erik</td>
+<td style="text-align: center;">M</td>
+<td>Sagene Ring Legekontor</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Stockfleths Gate 51</td>
+<td>0461 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1781</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="even">
+<td>Lahna, Sissel Bergflødt</td>
+<td style="text-align: center;">K</td>
+<td>Storoklinikken</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Vitaminveien 7-9</td>
+<td>0485 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1989</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="odd">
+<td>Lund, Halvor Harnæs</td>
+<td style="text-align: center;">M</td>
+<td>Sagene Lokalmedisinske Senter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 33C</td>
+<td>0477 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: right;">401</td>
+<td style="text-align: right;">299</td></tr>
+<tr class="even">
+<td>Midha, Rajinder Kumar</td>
+<td style="text-align: center;">M</td>
+<td>Bentsebro Legesenter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 78 A</td>
+<td>0484 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">241</td>
+<td style="text-align: right;">259</td></tr>
+<tr class="odd">
+<td>Monefeldt, Barbro</td>
+<td style="text-align: center;">K</td>
+<td>Sagene Lokalmedisinske Senter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 33C</td>
+<td>0477 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: right;">692</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="even">
+<td>Ofstad, Randi Solveig</td>
+<td style="text-align: center;">K</td>
+<td>Iladalen Legekontor</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Kingos Gate 12-14</td>
+<td>0457 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1384</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="odd">
+<td>Ragavan, Arrjun</td>
+<td style="text-align: center;">M</td>
+<td>Bentsebro Legesenter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 78 A</td>
+<td>0484 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1194</td>
+<td style="text-align: right;">306</td></tr>
+<tr class="even">
+<td>Røisland, Bent</td>
+<td style="text-align: center;">M</td>
+<td>Torshovdalen Legesenter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Hans Nielsen Hauges Gate 37 E</td>
+<td>0481 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1684</td>
+<td style="text-align: right;">16</td></tr>
+<tr class="odd">
+<td>Siverts, Henrik</td>
+<td style="text-align: center;">M</td>
+<td>Bentsebro Legesenter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 78 A</td>
+<td>0484 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">919</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="even">
+<td>Sollie, Gøril Guttormsen</td>
+<td style="text-align: center;">K</td>
+<td>Sagene Lokalmedisinske Senter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 33C</td>
+<td>0477 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: right;">693</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="odd">
+<td>Thorsby, Per Medbøe</td>
+<td style="text-align: center;">M</td>
+<td>Bentsebro Legesenter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 78 A</td>
+<td>0484 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: right;">0</td></tr>
+<tr class="even">
+<td>Truong, Thang Duc</td>
+<td style="text-align: center;">M</td>
+<td>Sagene Lokalmedisinske Senter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 33C</td>
+<td>0477 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">300</td></tr>
+<tr class="odd">
+<td>Vikar Sandaker Legekontor, </td>
+<td style="text-align: center;">U</td>
+<td>Sandaker Legekontor</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 59</td>
+<td>0477 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1166</td>
+<td style="text-align: right;">134</td></tr>
+<tr class="even">
+<td>Østerås, Helene</td>
+<td style="text-align: center;">K</td>
+<td>Sagene Lokalmedisinske Senter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Sandakerveien 33C</td>
+<td>0477 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: right;">694</td>
+<td style="text-align: right;">6</td></tr>
+<tr class="odd">
+<td>Øyum, Ole Henrik</td>
+<td style="text-align: center;">M</td>
+<td>Torshovdalen Lgesenter</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td>Hans Nielsen Hauges Gate 37 E</td>
+<td>0481 Oslo</td>
+<td style="text-align: center;">
+			Ja
+		</td>
+<td style="text-align: center;">
+			Nei
+		</td>
+<td style="text-align: right;">1699</td>
+<td style="text-align: right;">1</td></tr></tbody></table>
+	<p class="litentekst">1) Tilgj.= Tilgjengelig for funksjonshemmede m.fl.<br>
+	2) GP = Gruppepraksis - Legen jobber i et legesenter sammen med andre fastleger.<br>
+	3) FL = Fellesliste - Legen deler sin liste med andre fastleger ved det samme senteret. Dersom du velger legen, kan du komme til en annen lege ved legesenteret når du bestiller time.<br><br>
+	Ledig = Antall ledige plasser på fastlegens liste</p>
+
+<p>&nbsp;</p></div>
+
+
+                        	</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End mainContainer-->
+        <!--Start bottomSpacer-->
+        <!--End bottomSpacer-->
+
+		<!-- Google analytics--><script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script><script type="text/javascript">try {var pageTracker = _gat._getTracker("UA-10213802-1");
+		pageTracker._trackPageview();} catch(err) {}</script>
+			
+        <div id="NAVborderBottomContainer">
+            <div id="NAVborderBottomCenter"><div id="borderBottomLeft"></div>
+                <div id="NAVborderBottomLeft">
+                    <div id="NAVborderBottomRight"> </div>
+                </div>
+            </div>
+    </div>   
+</body>
+</html>
