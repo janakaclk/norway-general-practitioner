@@ -28,5 +28,8 @@
     "mocha": "^2.2.0",
     "mock-request": "^0.1.2",
     "nock": "^0.59.1"
+  },
+  "dependencies": {
+    "htmlparser2": "^3.8.3"
   }
 }
